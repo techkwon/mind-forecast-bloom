@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Calendar, Check, Sparkles } from "lucide-react";
+import { Calendar, Check, Sparkles, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Calendar as DatePicker } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
@@ -15,14 +14,40 @@ interface DateInputFormProps {
 }
 
 export function DateInputForm({ onSubmit, isLoading }: DateInputFormProps) {
-  const [selectedDate, setSelectedDate] = useState<Date>();
+  const [selectedYear, setSelectedYear] = useState<string>("");
+  const [selectedMonth, setSelectedMonth] = useState<string>("");
+  const [selectedDay, setSelectedDay] = useState<string>("");
   const [shouldSave, setShouldSave] = useState(false);
 
+  // 년도 옵션 생성 (1930-2010)
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: currentYear - 1930 + 1 }, (_, i) => currentYear - i);
+  
+  // 월 옵션
+  const months = Array.from({ length: 12 }, (_, i) => i + 1);
+  
+  // 일 옵션 (선택된 년월에 따른 마지막 날 계산)
+  const getDaysInMonth = (year: number, month: number) => {
+    return new Date(year, month, 0).getDate();
+  };
+  
+  const days = selectedYear && selectedMonth 
+    ? Array.from({ length: getDaysInMonth(parseInt(selectedYear), parseInt(selectedMonth)) }, (_, i) => i + 1)
+    : Array.from({ length: 31 }, (_, i) => i + 1);
+
+  const isFormValid = selectedYear && selectedMonth && selectedDay;
+  
   const handleSubmit = () => {
-    if (!selectedDate) return;
+    if (!isFormValid) return;
     
-    const birthDate = format(selectedDate, "yyyy-MM-dd");
+    const birthDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')}`;
     onSubmit(birthDate, shouldSave);
+  };
+
+  const getFormattedDate = () => {
+    if (!isFormValid) return null;
+    const date = new Date(parseInt(selectedYear), parseInt(selectedMonth) - 1, parseInt(selectedDay));
+    return format(date, "yyyy년 MM월 dd일", { locale: ko });
   };
 
   return (
@@ -51,43 +76,69 @@ export function DateInputForm({ onSubmit, isLoading }: DateInputFormProps) {
           </CardHeader>
           
           <CardContent className="space-y-6">
-            <div className="space-y-2">
+            <div className="space-y-4">
               <label className="text-sm font-medium text-foreground">
                 생년월일
               </label>
               
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className={cn(
-                      "w-full justify-start text-left font-normal h-12",
-                      !selectedDate && "text-muted-foreground",
-                      "border-2 hover:border-primary transition-warm"
-                    )}
-                  >
-                    <Calendar className="mr-3 h-5 w-5" />
-                    {selectedDate ? (
-                      format(selectedDate, "yyyy년 MM월 dd일", { locale: ko })
-                    ) : (
-                      <span>날짜를 선택해주세요</span>
-                    )}
-                  </Button>
-                </PopoverTrigger>
-                
-                <PopoverContent className="w-auto p-0" align="start">
-                  <DatePicker
-                    mode="single"
-                    selected={selectedDate}
-                    onSelect={setSelectedDate}
-                    disabled={(date) =>
-                      date > new Date() || date < new Date("1900-01-01")
-                    }
-                    initialFocus
-                    className="pointer-events-auto"
-                  />
-                </PopoverContent>
-              </Popover>
+              {/* 년도 선택 */}
+              <div className="space-y-3">
+                <Select value={selectedYear} onValueChange={setSelectedYear}>
+                  <SelectTrigger className="h-12 border-2 hover:border-primary transition-warm">
+                    <div className="flex items-center">
+                      <Calendar className="mr-2 h-4 w-4 text-muted-foreground" />
+                      <SelectValue placeholder="년도를 선택하세요 (예: 1980)" />
+                    </div>
+                  </SelectTrigger>
+                  <SelectContent className="max-h-60">
+                    {years.map((year) => (
+                      <SelectItem key={year} value={year.toString()}>
+                        {year}년
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                {/* 월과 일 선택 (년도 선택 후 표시) */}
+                {selectedYear && (
+                  <div className="grid grid-cols-2 gap-3">
+                    <Select value={selectedMonth} onValueChange={setSelectedMonth}>
+                      <SelectTrigger className="h-12 border-2 hover:border-primary transition-warm">
+                        <SelectValue placeholder="월" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {months.map((month) => (
+                          <SelectItem key={month} value={month.toString()}>
+                            {month}월
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+
+                    <Select value={selectedDay} onValueChange={setSelectedDay}>
+                      <SelectTrigger className="h-12 border-2 hover:border-primary transition-warm">
+                        <SelectValue placeholder="일" />
+                      </SelectTrigger>
+                      <SelectContent className="max-h-60">
+                        {days.map((day) => (
+                          <SelectItem key={day} value={day.toString()}>
+                            {day}일
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
+              </div>
+
+              {/* 선택된 날짜 미리보기 */}
+              {isFormValid && (
+                <div className="bg-primary-soft rounded-lg p-4 text-center animate-slide-up">
+                  <p className="text-primary font-medium">
+                    선택된 생년월일: {getFormattedDate()}
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="bg-primary-soft rounded-lg p-4 space-y-3">
@@ -115,7 +166,7 @@ export function DateInputForm({ onSubmit, isLoading }: DateInputFormProps) {
 
             <Button
               onClick={handleSubmit}
-              disabled={!selectedDate || isLoading}
+              disabled={!isFormValid || isLoading}
               className="w-full h-12 text-lg font-medium gradient-sunrise border-0 hover:scale-105 transition-bounce disabled:opacity-50"
             >
               {isLoading ? (
