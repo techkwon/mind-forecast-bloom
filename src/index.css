@@ -135,9 +135,9 @@
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='16'%3E🌟%3C/text%3E%3C/svg%3E"), auto;
   }
   
-  /* 파스텔 이모지 커서 호버 효과 */
+  /* 하트 이모지 커서 호버 효과 */
   button, a, [role="button"] {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='20'%3E✨%3C/text%3E%3C/svg%3E"), pointer;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='24'%3E💖%3C/text%3E%3C/svg%3E"), pointer;
   }
 }
 
@@ -289,5 +289,50 @@
     background: rgba(255, 255, 255, 0.35);
     border-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-2px);
+  }
+  
+  /* 3D 카드 효과 */
+  .card-3d {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
+    box-shadow: 
+      0 8px 32px 0 rgba(31, 38, 135, 0.15),
+      0 20px 40px -10px rgba(99, 102, 241, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-3d:hover {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-8px);
+    box-shadow: 
+      0 12px 48px 0 rgba(31, 38, 135, 0.25),
+      0 30px 60px -10px rgba(99, 102, 241, 0.3);
+  }
+  
+  /* 모바일 반응형 */
+  @media (max-width: 768px) {
+    .glass-card {
+      margin: 0.5rem;
+      padding: 1rem;
+    }
+    
+    .card-3d {
+      transform: none;
+      box-shadow: var(--shadow-glass);
+    }
+    
+    .card-3d:hover {
+      transform: translateY(-4px);
+      box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.2),
+        0 16px 32px -8px rgba(99, 102, 241, 0.25);
+    }
+    
+    /* 모바일에서 하트 커서 크기 조정 */
+    body {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='14'%3E💖%3C/text%3E%3C/svg%3E"), auto;
+    }
+    
+    button, a, [role="button"] {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='18'%3E💖%3C/text%3E%3C/svg%3E"), pointer;
+    }
   }
 }

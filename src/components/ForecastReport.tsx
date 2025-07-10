@@ -155,7 +155,7 @@ export function ForecastReport({
         </div>
 
         {/* 메인 요약 */}
-        <Card className="glass-card glass-hover transition-warm border-0">
+        <Card className="glass-card glass-hover card-3d transition-warm border-0">
           <CardContent className="p-6">
             <div className="grid md:grid-cols-2 gap-6 items-center">
               <div className="space-y-4">
@@ -193,27 +193,11 @@ export function ForecastReport({
           </CardContent>
         </Card>
 
-        {/* 바이오리듬 차트 */}
-        <Card className="glass-card glass-hover transition-warm border-0">
-          <CardHeader>
-            <CardTitle className="text-primary">바이오리듬 분석</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <BiorhythmChart 
-              currentBiorhythm={biorhythm}
-              weeklyData={weeklyData}
-            />
-          </CardContent>
-        </Card>
-
-        {/* 시간대별 조언 */}
-        <TimeBasedAdvice advice={forecastData.timeBasedAdvice} />
-
         {/* 패션 & 플레이리스트 추천 */}
         <div className="grid md:grid-cols-2 gap-4">
           {/* 패션 추천 */}
           {forecastData.fashionRecommendation && (
-            <Card className="glass-card glass-hover transition-warm border-0">
+            <Card className="glass-card glass-hover card-3d transition-warm border-0">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-3">
                   <div className="text-2xl">👗</div>
@@ -261,7 +245,7 @@ export function ForecastReport({
 
           {/* 플레이리스트 추천 */}
           {forecastData.playlistRecommendation && (
-            <Card className="glass-card glass-hover transition-warm border-0">
+            <Card className="glass-card glass-hover card-3d transition-warm border-0">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-3">
                   <div className="text-2xl">🎵</div>
@@ -308,6 +292,23 @@ export function ForecastReport({
             </Card>
           )}
         </div>
+
+        {/* 바이오리듬 차트 */}
+        <Card className="glass-card glass-hover transition-warm border-0">
+          <CardHeader>
+            <CardTitle className="text-primary">바이오리듬 분석</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <BiorhythmChart 
+              currentBiorhythm={biorhythm}
+              weeklyData={weeklyData}
+            />
+          </CardContent>
+        </Card>
+
+        {/* 시간대별 조언 */}
+        <TimeBasedAdvice advice={forecastData.timeBasedAdvice} />
+
 
         {/* 주의사항만 남김 */}
         <Card className="glass-card glass-hover transition-warm border-0">
