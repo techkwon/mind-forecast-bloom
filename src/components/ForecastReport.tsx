@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { BiorhythmChart } from "./BiorhythmChart";
 import { MoodGauge } from "./MoodGauge";
 import { TimeBasedAdvice } from "./TimeBasedAdvice";
+import { FloatingHearts } from "./FloatingHearts";
 import { calculateBiorhythm, generateWeeklyBiorhythm } from "@/lib/biorhythm";
 
 export interface ForecastData {
@@ -77,7 +78,9 @@ export function ForecastReport({
   });
 
   return (
-    <div className="min-h-screen bg-gradient-warm p-4">
+    <>
+      <FloatingHearts />
+      <div className="min-h-screen bg-gradient-warm p-4 relative z-10">
       <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
         {/* 헤더 */}
         <div className="flex items-center justify-between">
@@ -328,5 +331,6 @@ export function ForecastReport({
         </div>
       </div>
     </div>
+    </>
   );
 }

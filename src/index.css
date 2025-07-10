@@ -6,54 +6,54 @@
 
 @layer base {
   :root {
-    /* 아침 햇살 색상 팔레트 */
-    --background: 28 100% 98%;
-    --foreground: 20 14% 20%;
+    /* 핑크 갬성 색상 팔레트 */
+    --background: 330 100% 98%;
+    --foreground: 340 15% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 20 14% 20%;
+    --card-foreground: 340 15% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 20 14% 20%;
+    --popover-foreground: 340 15% 25%;
 
-    /* 메인 오렌지/앰버 색상 */
-    --primary: 25 95% 53%;
+    /* 메인 핑크 색상 */
+    --primary: 330 81% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 28 100% 65%;
-    --primary-soft: 30 100% 95%;
+    --primary-glow: 320 100% 75%;
+    --primary-soft: 330 100% 95%;
 
-    /* 세컨더리 따뜻한 색상 */
-    --secondary: 35 100% 95%;
-    --secondary-foreground: 25 95% 53%;
+    /* 세컨더리 핑크 색상 */
+    --secondary: 320 100% 95%;
+    --secondary-foreground: 330 81% 60%;
 
-    --muted: 30 40% 96%;
-    --muted-foreground: 20 14% 60%;
+    --muted: 320 40% 96%;
+    --muted-foreground: 340 15% 60%;
 
-    --accent: 35 100% 92%;
-    --accent-foreground: 20 14% 20%;
+    --accent: 315 100% 92%;
+    --accent-foreground: 340 15% 25%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 30 30% 88%;
-    --input: 30 30% 92%;
-    --ring: 25 95% 53%;
+    --border: 320 30% 88%;
+    --input: 320 30% 92%;
+    --ring: 330 81% 60%;
 
-    /* 감정 상태 색상 */
-    --sunny: 45 100% 55%;
-    --partly-cloudy: 40 85% 60%;
-    --cloudy: 220 15% 65%;
-    --rainy: 220 50% 50%;
+    /* 감정 상태 색상 - 핑크톤 */
+    --sunny: 300 100% 70%;
+    --partly-cloudy: 310 85% 75%;
+    --cloudy: 320 50% 65%;
+    --rainy: 330 40% 55%;
 
-    /* 그라디언트 */
-    --gradient-sunrise: linear-gradient(135deg, 25 95% 53%, 45 100% 65%);
-    --gradient-warm: linear-gradient(180deg, 30 100% 97%, 25 100% 93%);
-    --gradient-glow: linear-gradient(135deg, 25 95% 53% 0%, 28 100% 65% 50%, 45 100% 70% 100%);
+    /* 핑크 그라디언트 */
+    --gradient-sunrise: linear-gradient(135deg, 330 81% 60%, 320 100% 75%);
+    --gradient-warm: linear-gradient(180deg, 320 100% 97%, 330 100% 93%);
+    --gradient-glow: linear-gradient(135deg, 330 81% 60% 0%, 320 100% 75% 50%, 300 100% 80% 100%);
 
-    /* 그림자 */
-    --shadow-warm: 0 4px 20px 0 hsl(25 95% 53% / 0.15);
-    --shadow-glow: 0 0 40px hsl(25 95% 53% / 0.3);
-    --shadow-soft: 0 2px 10px 0 hsl(20 14% 20% / 0.1);
+    /* 핑크 그림자 */
+    --shadow-warm: 0 4px 20px 0 hsl(330 81% 60% / 0.2);
+    --shadow-glow: 0 0 40px hsl(330 81% 60% / 0.4);
+    --shadow-soft: 0 2px 10px 0 hsl(340 15% 25% / 0.1);
 
     /* 애니메이션 */
     --transition-warm: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -130,6 +130,12 @@
     @apply bg-background text-foreground;
     background: var(--gradient-warm);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='16'%3E💖%3C/text%3E%3C/svg%3E"), auto;
+  }
+  
+  /* 하트 커서 호버 효과 */
+  button, a, [role="button"] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='20'%3E💕%3C/text%3E%3C/svg%3E"), pointer;
   }
 }
 
@@ -215,5 +221,33 @@
     50% { 
       box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
     }
+  }
+  
+  /* 하트 둥둥 애니메이션 */
+  @keyframes heartFloat {
+    0% {
+      transform: translateY(0px) rotate(0deg) scale(1);
+      opacity: 0.3;
+    }
+    25% {
+      opacity: 0.6;
+      transform: translateY(-10px) rotate(90deg) scale(1.1);
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg) scale(1);
+      opacity: 0.4;
+    }
+    75% {
+      opacity: 0.2;
+      transform: translateY(-30px) rotate(270deg) scale(0.9);
+    }
+    100% {
+      transform: translateY(-40px) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  .heart-float {
+    animation: heartFloat 20s linear infinite;
   }
 }
