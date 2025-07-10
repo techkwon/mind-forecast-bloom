@@ -2,41 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* 마음 예보 - 따뜻한 아침 햇살 디자인 시스템 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* 아침 햇살 색상 팔레트 */
+    --background: 28 100% 98%;
+    --foreground: 20 14% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 20 14% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 20 14% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* 메인 오렌지/앰버 색상 */
+    --primary: 25 95% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 28 100% 65%;
+    --primary-soft: 30 100% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* 세컨더리 따뜻한 색상 */
+    --secondary: 35 100% 95%;
+    --secondary-foreground: 25 95% 53%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 30 40% 96%;
+    --muted-foreground: 20 14% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 35 100% 92%;
+    --accent-foreground: 20 14% 20%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 30 30% 88%;
+    --input: 30 30% 92%;
+    --ring: 25 95% 53%;
 
-    --radius: 0.5rem;
+    /* 감정 상태 색상 */
+    --sunny: 45 100% 55%;
+    --partly-cloudy: 40 85% 60%;
+    --cloudy: 220 15% 65%;
+    --rainy: 220 50% 50%;
+
+    /* 그라디언트 */
+    --gradient-sunrise: linear-gradient(135deg, 25 95% 53%, 45 100% 65%);
+    --gradient-warm: linear-gradient(180deg, 30 100% 97%, 25 100% 93%);
+    --gradient-glow: linear-gradient(135deg, 25 95% 53% 0%, 28 100% 65% 50%, 45 100% 70% 100%);
+
+    /* 그림자 */
+    --shadow-warm: 0 4px 20px 0 hsl(25 95% 53% / 0.15);
+    --shadow-glow: 0 0 40px hsl(25 95% 53% / 0.3);
+    --shadow-soft: 0 2px 10px 0 hsl(20 14% 20% / 0.1);
+
+    /* 애니메이션 */
+    --transition-warm: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +79,45 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* 밤 모드는 따뜻한 색조 유지 */
+    --background: 20 20% 8%;
+    --foreground: 30 40% 92%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 20 18% 12%;
+    --card-foreground: 30 40% 92%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 20 18% 12%;
+    --popover-foreground: 30 40% 92%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 25 95% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 28 100% 65%;
+    --primary-soft: 25 60% 15%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 25 30% 15%;
+    --secondary-foreground: 30 40% 92%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 20 15% 15%;
+    --muted-foreground: 30 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 25 40% 18%;
+    --accent-foreground: 30 40% 92%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 20 15% 22%;
+    --input: 20 15% 18%;
+    --ring: 25 95% 53%;
+
+    --sidebar-background: 20 18% 10%;
+    --sidebar-foreground: 30 40% 85%;
+    --sidebar-primary: 25 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 20 15% 15%;
+    --sidebar-accent-foreground: 30 40% 85%;
+    --sidebar-border: 20 15% 18%;
+    --sidebar-ring: 25 95% 53%;
   }
 }
 
@@ -101,5 +128,92 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-warm);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  /* 커스텀 컴포넌트 스타일 */
+  .gradient-sunrise {
+    background: var(--gradient-sunrise);
+  }
+  
+  .gradient-warm {
+    background: var(--gradient-warm);
+  }
+  
+  .gradient-glow {
+    background: var(--gradient-glow);
+  }
+  
+  .shadow-warm {
+    box-shadow: var(--shadow-warm);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .transition-warm {
+    transition: var(--transition-warm);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+  
+  /* 마음 날씨 게이지 */
+  .mood-gauge {
+    background: conic-gradient(
+      from 0deg,
+      hsl(var(--rainy)) 0deg 60deg,
+      hsl(var(--cloudy)) 60deg 120deg,
+      hsl(var(--partly-cloudy)) 120deg 180deg,
+      hsl(var(--sunny)) 180deg 240deg,
+      hsl(var(--primary-glow)) 240deg 300deg
+    );
+  }
+  
+  /* 호버 효과 */
+  .hover-lift {
+    @apply transition-warm hover:scale-105 hover:shadow-warm;
+  }
+  
+  .hover-glow {
+    @apply transition-warm hover:shadow-glow;
+  }
+  
+  /* 글로우 효과 */
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--primary-glow) / 0.5);
+  }
+  
+  /* 플로팅 애니메이션 */
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* 펄스 글로우 */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    }
   }
 }
