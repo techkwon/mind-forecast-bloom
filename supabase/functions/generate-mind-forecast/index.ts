@@ -76,8 +76,29 @@ serve(async (req) => {
   },
   "dailyAdvice": "오늘은 전반적으로 균형잡힌 하루가 될 것 같습니다. 특히 오전에는 신체적 활력이 넘치니 중요한 일정을 배치해보세요.",
   "precautions": "오후에 약간의 피로감을 느낄 수 있으니 적절한 휴식을 취하세요.",
-  "encouragement": "당신의 긍정적인 에너지가 주변 사람들에게도 좋은 영향을 줄 거예요. 자신감을 가지고 하루를 시작하세요! ✨"
+  "encouragement": "당신의 긍정적인 에너지가 주변 사람들에게도 좋은 영향을 줄 거예요. 자신감을 가지고 하루를 시작하세요! ✨",
+  "fashionRecommendation": {
+    "style": "캐주얼 시크",
+    "colors": ["하늘색", "화이트", "베이지"],
+    "items": ["니트 가디건", "데님 팬츠", "스니커즈"],
+    "description": "오늘은 편안하면서도 세련된 룩으로 활기찬 에너지를 표현해보세요."
+  },
+  "playlistRecommendation": {
+    "mood": "상쾌하고 활기찬",
+    "genres": ["팝", "인디", "어쿠스틱"],
+    "songs": [
+      {"title": "좋은 날", "artist": "아이유"},
+      {"title": "Spring Day", "artist": "BTS"},
+      {"title": "밤편지", "artist": "아이유"}
+    ],
+    "description": "긍정적인 에너지를 충전하고 기분을 업시켜줄 곡들로 구성된 플레이리스트입니다."
+  }
 }
+
+**중요 참고사항:**
+- 패션 추천은 현실적이고 실용적인 아이템으로 구성
+- 플레이리스트는 한국 대중음악 위주로, 바이오리듬에 맞는 분위기로 추천
+- 모든 추천은 당일의 바이오리듬 분석 결과와 연관성 있게 구성
 `;
 
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${geminiApiKey}`, {
