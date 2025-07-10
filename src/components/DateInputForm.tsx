@@ -65,7 +65,7 @@ export function DateInputForm({ onSubmit, isLoading }: DateInputFormProps) {
           </p>
         </div>
 
-        <Card className="shadow-warm hover-glow transition-warm">
+        <Card className="glass-card glass-hover transition-warm border-0">
           <CardHeader className="text-center pb-4">
             <CardTitle className="text-xl text-primary">
               생년월일을 알려주세요
@@ -84,7 +84,7 @@ export function DateInputForm({ onSubmit, isLoading }: DateInputFormProps) {
               {/* 년도 선택 */}
               <div className="space-y-3">
                 <Select value={selectedYear} onValueChange={setSelectedYear}>
-                  <SelectTrigger className="h-12 border-2 hover:border-primary transition-warm">
+                  <SelectTrigger className="glass-input h-12 border-0 hover:bg-white/25 transition-warm">
                     <div className="flex items-center">
                       <Calendar className="mr-2 h-4 w-4 text-muted-foreground" />
                       <SelectValue placeholder="년도를 선택하세요 (예: 1980)" />
@@ -103,7 +103,7 @@ export function DateInputForm({ onSubmit, isLoading }: DateInputFormProps) {
                 {selectedYear && (
                   <div className="grid grid-cols-2 gap-3">
                     <Select value={selectedMonth} onValueChange={setSelectedMonth}>
-                      <SelectTrigger className="h-12 border-2 hover:border-primary transition-warm">
+                      <SelectTrigger className="glass-input h-12 border-0 hover:bg-white/25 transition-warm">
                         <SelectValue placeholder="월" />
                       </SelectTrigger>
                       <SelectContent>
@@ -116,7 +116,7 @@ export function DateInputForm({ onSubmit, isLoading }: DateInputFormProps) {
                     </Select>
 
                     <Select value={selectedDay} onValueChange={setSelectedDay}>
-                      <SelectTrigger className="h-12 border-2 hover:border-primary transition-warm">
+                      <SelectTrigger className="glass-input h-12 border-0 hover:bg-white/25 transition-warm">
                         <SelectValue placeholder="일" />
                       </SelectTrigger>
                       <SelectContent className="max-h-60">
@@ -133,7 +133,7 @@ export function DateInputForm({ onSubmit, isLoading }: DateInputFormProps) {
 
               {/* 선택된 날짜 미리보기 */}
               {isFormValid && (
-                <div className="bg-primary-soft rounded-lg p-4 text-center animate-slide-up">
+                <div className="glass-card rounded-2xl p-4 text-center animate-slide-up border border-white/30">
                   <p className="text-primary font-medium">
                     선택된 생년월일: {getFormattedDate()}
                   </p>
@@ -141,7 +141,7 @@ export function DateInputForm({ onSubmit, isLoading }: DateInputFormProps) {
               )}
             </div>
 
-            <div className="bg-primary-soft rounded-lg p-4 space-y-3">
+            <div className="glass-card rounded-2xl p-4 space-y-3 border border-white/20">
               <div className="flex items-start space-x-3">
                 <Checkbox
                   id="save-data"
@@ -167,7 +167,7 @@ export function DateInputForm({ onSubmit, isLoading }: DateInputFormProps) {
             <Button
               onClick={handleSubmit}
               disabled={!isFormValid || isLoading}
-              className="w-full h-12 text-lg font-medium gradient-sunrise border-0 hover:scale-105 transition-bounce disabled:opacity-50"
+              className="glass-button w-full h-12 text-lg font-medium text-primary hover:text-white hover:bg-primary/80 border-0 hover:scale-105 transition-all disabled:opacity-50"
             >
               {isLoading ? (
                 <div className="flex items-center space-x-2">

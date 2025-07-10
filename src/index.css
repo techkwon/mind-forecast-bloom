@@ -6,60 +6,62 @@
 
 @layer base {
   :root {
-    /* 핑크 갬성 색상 팔레트 */
-    --background: 330 100% 98%;
-    --foreground: 340 15% 25%;
+    /* 파스텔 갬성 색상 팔레트 */
+    --background: 240 100% 99%;
+    --foreground: 220 15% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 340 15% 25%;
+    --card-foreground: 220 15% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 340 15% 25%;
+    --popover-foreground: 220 15% 25%;
 
-    /* 메인 핑크 색상 */
-    --primary: 330 81% 60%;
+    /* 메인 파스텔 퍼플 */
+    --primary: 250 75% 75%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 320 100% 75%;
-    --primary-soft: 330 100% 95%;
+    --primary-glow: 260 85% 85%;
+    --primary-soft: 250 100% 96%;
 
-    /* 세컨더리 핑크 색상 */
-    --secondary: 320 100% 95%;
-    --secondary-foreground: 330 81% 60%;
+    /* 세컨더리 파스텔 민트 */
+    --secondary: 180 100% 95%;
+    --secondary-foreground: 250 75% 75%;
 
-    --muted: 320 40% 96%;
-    --muted-foreground: 340 15% 60%;
+    --muted: 220 40% 96%;
+    --muted-foreground: 220 15% 60%;
 
-    --accent: 315 100% 92%;
-    --accent-foreground: 340 15% 25%;
+    --accent: 200 100% 92%;
+    --accent-foreground: 220 15% 25%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 320 30% 88%;
-    --input: 320 30% 92%;
-    --ring: 330 81% 60%;
+    --border: 220 30% 88%;
+    --input: 220 30% 92%;
+    --ring: 250 75% 75%;
 
-    /* 감정 상태 색상 - 핑크톤 */
-    --sunny: 300 100% 70%;
-    --partly-cloudy: 310 85% 75%;
-    --cloudy: 320 50% 65%;
-    --rainy: 330 40% 55%;
+    /* 감정 상태 색상 - 파스텔톤 */
+    --sunny: 60 100% 85%;
+    --partly-cloudy: 200 85% 80%;
+    --cloudy: 250 50% 75%;
+    --rainy: 220 40% 70%;
 
-    /* 핑크 그라디언트 */
-    --gradient-sunrise: linear-gradient(135deg, 330 81% 60%, 320 100% 75%);
-    --gradient-warm: linear-gradient(180deg, 320 100% 97%, 330 100% 93%);
-    --gradient-glow: linear-gradient(135deg, 330 81% 60% 0%, 320 100% 75% 50%, 300 100% 80% 100%);
+    /* 글래스모피즘 그라디언트 */
+    --gradient-sunrise: linear-gradient(135deg, 250 75% 75%, 200 85% 80%);
+    --gradient-warm: linear-gradient(180deg, 240 100% 98%, 250 100% 96%);
+    --gradient-glow: linear-gradient(135deg, 250 75% 75% 0%, 200 85% 80% 50%, 180 100% 85% 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
 
-    /* 핑크 그림자 */
-    --shadow-warm: 0 4px 20px 0 hsl(330 81% 60% / 0.2);
-    --shadow-glow: 0 0 40px hsl(330 81% 60% / 0.4);
-    --shadow-soft: 0 2px 10px 0 hsl(340 15% 25% / 0.1);
+    /* 글래스모피즘 그림자 */
+    --shadow-warm: 0 8px 32px 0 rgba(99, 102, 241, 0.1);
+    --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.2);
+    --shadow-soft: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 
     /* 애니메이션 */
     --transition-warm: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --radius: 1rem;
+    --radius: 1.5rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -130,12 +132,12 @@
     @apply bg-background text-foreground;
     background: var(--gradient-warm);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='16'%3E💖%3C/text%3E%3C/svg%3E"), auto;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='16'%3E🌟%3C/text%3E%3C/svg%3E"), auto;
   }
   
-  /* 하트 커서 호버 효과 */
+  /* 파스텔 이모지 커서 호버 효과 */
   button, a, [role="button"] {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='20'%3E💕%3C/text%3E%3C/svg%3E"), pointer;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='20'%3E✨%3C/text%3E%3C/svg%3E"), pointer;
   }
 }
 
@@ -250,4 +252,43 @@
   .heart-float {
     animation: heartFloat 20s linear infinite;
   }
+  
+  /* 애플 글래스모피즘 스타일 */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .glass-button {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  .glass-input {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  
+  .glass-message {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: var(--shadow-glass);
+  }
+  
+  /* 호버 시 글래스 효과 강화 */
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+  }
+}
 }

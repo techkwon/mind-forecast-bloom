@@ -36,17 +36,17 @@ export function FloatingHearts() {
       {hearts.map((heart) => (
         <div
           key={heart.id}
-          className="absolute heart-float opacity-30"
+          className="absolute heart-float opacity-40"
           style={{
             left: `${heart.x}%`,
             top: `${heart.y}%`,
             fontSize: `${heart.size}px`,
             animationDuration: `${heart.animationDuration}s`,
             animationDelay: `${heart.delay}s`,
-            color: 'hsl(330, 81%, 60%)',
+            color: 'hsl(250, 75%, 75%)',
           }}
         >
-          💖
+          {['🌟', '✨', '🔮', '💫', '⭐'][heart.id % 5]}
         </div>
       ))}
     </div>

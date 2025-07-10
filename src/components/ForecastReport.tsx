@@ -97,7 +97,7 @@ export function ForecastReport({
               size="sm"
               onClick={onRefresh}
               disabled={isLoading}
-              className="hover-lift"
+              className="glass-button glass-hover text-primary border-0"
             >
               <RefreshCw className={cn("w-4 h-4 mr-2", isLoading && "animate-spin")} />
               새로고침
@@ -107,7 +107,7 @@ export function ForecastReport({
               variant="outline"
               size="sm"
               onClick={onClearData}
-              className="hover-lift text-destructive border-destructive hover:bg-destructive hover:text-destructive-foreground"
+              className="glass-button glass-hover text-destructive border-0"
             >
               <Trash2 className="w-4 h-4 mr-2" />
               정보 삭제
@@ -117,18 +117,18 @@ export function ForecastReport({
 
         {/* 오늘의 총평 및 응원 메시지 - 맨 위로 이동 */}
         <div className="space-y-4">
-          {/* 격려 메시지 - 가독성 개선 */}
+          {/* 격려 메시지 - 글래스모피즘 + 파스텔 */}
           {forecastData.encouragement && (
-            <Card className="shadow-glow bg-gradient-to-br from-primary to-primary-glow border-0 animate-scale-in">
+            <Card className="glass-message border-0 animate-scale-in">
               <CardContent className="p-8 text-center">
                 <div className="flex justify-center mb-4">
                   <div className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
-                    <Sparkles className="w-6 h-6 text-white drop-shadow-lg" />
+                    <Sparkles className="w-6 h-6 text-primary drop-shadow-lg" />
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-white drop-shadow-lg">✨ 오늘의 메시지</h3>
+                <h3 className="text-2xl font-bold mb-4 text-primary drop-shadow-lg">✨ 오늘의 메시지</h3>
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/30">
-                  <p className="text-lg leading-relaxed font-medium text-white drop-shadow-md">
+                  <p className="text-lg leading-relaxed font-medium text-foreground">
                     {forecastData.encouragement}
                   </p>
                 </div>
@@ -138,7 +138,7 @@ export function ForecastReport({
 
           {/* 오늘의 총평 */}
           {forecastData.dailyAdvice && (
-            <Card className="shadow-warm hover-lift transition-warm animate-slide-up">
+            <Card className="glass-card glass-hover transition-warm animate-slide-up border-0">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className="text-3xl">💡</div>
@@ -155,7 +155,7 @@ export function ForecastReport({
         </div>
 
         {/* 메인 요약 */}
-        <Card className="shadow-warm hover-glow transition-warm">
+        <Card className="glass-card glass-hover transition-warm border-0">
           <CardContent className="p-6">
             <div className="grid md:grid-cols-2 gap-6 items-center">
               <div className="space-y-4">
@@ -194,7 +194,7 @@ export function ForecastReport({
         </Card>
 
         {/* 바이오리듬 차트 */}
-        <Card className="shadow-warm">
+        <Card className="glass-card glass-hover transition-warm border-0">
           <CardHeader>
             <CardTitle className="text-primary">바이오리듬 분석</CardTitle>
           </CardHeader>
@@ -213,7 +213,7 @@ export function ForecastReport({
         <div className="grid md:grid-cols-2 gap-4">
           {/* 패션 추천 */}
           {forecastData.fashionRecommendation && (
-            <Card className="shadow-warm hover-lift transition-warm">
+            <Card className="glass-card glass-hover transition-warm border-0">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-3">
                   <div className="text-2xl">👗</div>
@@ -261,7 +261,7 @@ export function ForecastReport({
 
           {/* 플레이리스트 추천 */}
           {forecastData.playlistRecommendation && (
-            <Card className="shadow-warm hover-lift transition-warm">
+            <Card className="glass-card glass-hover transition-warm border-0">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-3">
                   <div className="text-2xl">🎵</div>
@@ -310,7 +310,7 @@ export function ForecastReport({
         </div>
 
         {/* 주의사항만 남김 */}
-        <Card className="shadow-warm hover-lift transition-warm">
+        <Card className="glass-card glass-hover transition-warm border-0">
           <CardContent className="p-6">
             <div className="flex items-start space-x-3">
               <div className="text-2xl">⚠️</div>
