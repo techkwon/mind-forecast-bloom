@@ -97,6 +97,34 @@ export function ForecastReport({
           </div>
         </div>
 
+        {/* 오늘의 총평 및 응원 메시지 - 맨 위로 이동 */}
+        <div className="space-y-4">
+          {/* 격려 메시지 */}
+          <Card className="shadow-glow gradient-sunrise text-white">
+            <CardContent className="p-6 text-center">
+              <h3 className="text-xl font-bold mb-3">✨ 오늘의 메시지</h3>
+              <p className="text-lg leading-relaxed">
+                {forecastData.encouragement}
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* 오늘의 총평 */}
+          <Card className="shadow-warm hover-lift transition-warm">
+            <CardContent className="p-6">
+              <div className="flex items-start space-x-3">
+                <div className="text-2xl">💡</div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-primary mb-3">오늘의 총평</h3>
+                  <p className="text-foreground leading-relaxed">
+                    {forecastData.dailyAdvice}
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* 메인 요약 */}
         <Card className="shadow-warm hover-glow transition-warm">
           <CardContent className="p-6">
@@ -152,38 +180,18 @@ export function ForecastReport({
         {/* 시간대별 조언 */}
         <TimeBasedAdvice advice={forecastData.timeBasedAdvice} />
 
-        {/* 오늘의 조언 */}
-        <div className="grid md:grid-cols-2 gap-4">
-          <Card className="shadow-warm hover-lift transition-warm">
-            <CardHeader>
-              <CardTitle className="text-lg text-primary">💡 오늘의 조언</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-foreground leading-relaxed">
-                {forecastData.dailyAdvice}
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="shadow-warm hover-lift transition-warm">
-            <CardHeader>
-              <CardTitle className="text-lg text-amber-600">⚠️ 주의사항</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-foreground leading-relaxed">
-                {forecastData.precautions}
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* 격려 메시지 */}
-        <Card className="shadow-glow gradient-sunrise text-white">
-          <CardContent className="p-6 text-center">
-            <h3 className="text-xl font-bold mb-3">✨ 오늘의 메시지</h3>
-            <p className="text-lg leading-relaxed">
-              {forecastData.encouragement}
-            </p>
+        {/* 주의사항만 남김 */}
+        <Card className="shadow-warm hover-lift transition-warm">
+          <CardContent className="p-6">
+            <div className="flex items-start space-x-3">
+              <div className="text-2xl">⚠️</div>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-amber-600 mb-3">주의사항</h3>
+                <p className="text-foreground leading-relaxed">
+                  {forecastData.precautions}
+                </p>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
