@@ -115,11 +115,11 @@ export function ForecastReport({
           </div>
         </div>
 
-        {/* 오늘의 총평 및 응원 메시지 - 맨 위로 이동 */}
-        <div className="space-y-4">
+        {/* 오늘의 총평 및 응원 메시지 */}
+        <div className="space-y-6">
           {/* 격려 메시지 - 글래스모피즘 + 파스텔 */}
           {forecastData.encouragement && (
-            <Card className="glass-message border-0 animate-scale-in">
+            <Card className="glass-message card-primary card-3d card-glow-animation border-0 animate-scale-in card-content-separated">
               <CardContent className="p-8 text-center">
                 <div className="flex justify-center mb-4">
                   <div className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
@@ -138,7 +138,7 @@ export function ForecastReport({
 
           {/* 오늘의 총평 */}
           {forecastData.dailyAdvice && (
-            <Card className="glass-card glass-hover transition-warm animate-slide-up border-0">
+            <Card className="glass-card card-secondary glass-hover card-3d transition-warm animate-slide-up border-0 card-content-separated">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className="text-3xl">💡</div>
@@ -155,7 +155,7 @@ export function ForecastReport({
         </div>
 
         {/* 메인 요약 */}
-        <Card className="glass-card glass-hover card-3d transition-warm border-0">
+        <Card className="glass-card card-accent glass-hover card-3d transition-warm border-0 card-content-separated">
           <CardContent className="p-6">
             <div className="grid md:grid-cols-2 gap-6 items-center">
               <div className="space-y-4">
@@ -194,32 +194,32 @@ export function ForecastReport({
         </Card>
 
         {/* 패션 & 플레이리스트 추천 */}
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-6">
           {/* 패션 추천 */}
           {forecastData.fashionRecommendation && (
-            <Card className="glass-card glass-hover card-3d transition-warm border-0">
+            <Card className="glass-card card-success glass-hover card-3d responsive-3d transition-warm border-0 card-content-separated">
               <CardContent className="p-6">
-                <div className="flex items-start space-x-3">
-                  <div className="text-2xl">👗</div>
+                <div className="flex items-start space-x-4">
+                  <div className="text-3xl">👗</div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold text-primary mb-3">오늘의 패션</h3>
-                    <p className="text-sm text-muted-foreground mb-3">
+                    <h3 className="text-xl font-bold text-primary mb-4">오늘의 패션</h3>
+                    <p className="text-sm text-muted-foreground mb-4">
                       {forecastData.fashionRecommendation.description}
                     </p>
                     
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       <div>
                         <span className="text-sm font-medium text-foreground">스타일: </span>
-                        <Badge variant="outline" className="ml-1">
+                        <Badge variant="outline" className="ml-2 border-2">
                           {forecastData.fashionRecommendation.style}
                         </Badge>
                       </div>
                       
                       <div>
                         <span className="text-sm font-medium text-foreground">추천 색상: </span>
-                        <div className="flex flex-wrap gap-1 mt-1">
+                        <div className="flex flex-wrap gap-2 mt-2">
                           {forecastData.fashionRecommendation.colors.map((color, index) => (
-                            <Badge key={index} variant="secondary" className="text-xs">
+                            <Badge key={index} variant="secondary" className="text-xs px-3 py-1">
                               {color}
                             </Badge>
                           ))}
@@ -228,9 +228,9 @@ export function ForecastReport({
                       
                       <div>
                         <span className="text-sm font-medium text-foreground">추천 아이템: </span>
-                        <div className="flex flex-wrap gap-1 mt-1">
+                        <div className="flex flex-wrap gap-2 mt-2">
                           {forecastData.fashionRecommendation.items.map((item, index) => (
-                            <Badge key={index} variant="outline" className="text-xs">
+                            <Badge key={index} variant="outline" className="text-xs px-3 py-1 border-2">
                               {item}
                             </Badge>
                           ))}
@@ -245,29 +245,29 @@ export function ForecastReport({
 
           {/* 플레이리스트 추천 */}
           {forecastData.playlistRecommendation && (
-            <Card className="glass-card glass-hover card-3d transition-warm border-0">
+            <Card className="glass-card card-secondary glass-hover card-3d responsive-3d transition-warm border-0 card-content-separated">
               <CardContent className="p-6">
-                <div className="flex items-start space-x-3">
-                  <div className="text-2xl">🎵</div>
+                <div className="flex items-start space-x-4">
+                  <div className="text-3xl">🎵</div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold text-primary mb-3">오늘의 플레이리스트</h3>
-                    <p className="text-sm text-muted-foreground mb-3">
+                    <h3 className="text-xl font-bold text-primary mb-4">오늘의 플레이리스트</h3>
+                    <p className="text-sm text-muted-foreground mb-4">
                       {forecastData.playlistRecommendation.description}
                     </p>
                     
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       <div>
                         <span className="text-sm font-medium text-foreground">분위기: </span>
-                        <Badge variant="outline" className="ml-1">
+                        <Badge variant="outline" className="ml-2 border-2">
                           {forecastData.playlistRecommendation.mood}
                         </Badge>
                       </div>
                       
                       <div>
                         <span className="text-sm font-medium text-foreground">장르: </span>
-                        <div className="flex flex-wrap gap-1 mt-1">
+                        <div className="flex flex-wrap gap-2 mt-2">
                           {forecastData.playlistRecommendation.genres.map((genre, index) => (
-                            <Badge key={index} variant="secondary" className="text-xs">
+                            <Badge key={index} variant="secondary" className="text-xs px-3 py-1">
                               {genre}
                             </Badge>
                           ))}
@@ -276,10 +276,10 @@ export function ForecastReport({
                       
                       <div>
                         <span className="text-sm font-medium text-foreground">추천 곡: </span>
-                        <div className="space-y-1 mt-2">
+                        <div className="space-y-2 mt-2">
                           {forecastData.playlistRecommendation.songs.slice(0, 3).map((song, index) => (
-                            <div key={index} className="text-xs bg-muted/50 rounded p-2">
-                              <span className="font-medium">{song.title}</span>
+                            <div key={index} className="text-sm bg-white/20 backdrop-blur-sm rounded-lg p-3 border border-white/30">
+                              <span className="font-medium text-foreground">{song.title}</span>
                               <span className="text-muted-foreground"> - {song.artist}</span>
                             </div>
                           ))}
@@ -294,9 +294,12 @@ export function ForecastReport({
         </div>
 
         {/* 바이오리듬 차트 */}
-        <Card className="glass-card glass-hover transition-warm border-0">
+        <Card className="glass-card card-primary glass-hover card-3d transition-warm border-0 card-content-separated">
           <CardHeader>
-            <CardTitle className="text-primary">바이오리듬 분석</CardTitle>
+            <CardTitle className="text-primary text-xl flex items-center space-x-2">
+              <span>📊</span>
+              <span>바이오리듬 분석</span>
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <BiorhythmChart 
@@ -309,24 +312,25 @@ export function ForecastReport({
         {/* 시간대별 조언 */}
         <TimeBasedAdvice advice={forecastData.timeBasedAdvice} />
 
-
-        {/* 주의사항만 남김 */}
-        <Card className="glass-card glass-hover transition-warm border-0">
+        {/* 주의사항 */}
+        <Card className="glass-card card-accent glass-hover card-3d transition-warm border-0 card-content-separated">
           <CardContent className="p-6">
-            <div className="flex items-start space-x-3">
-              <div className="text-2xl">⚠️</div>
+            <div className="flex items-start space-x-4">
+              <div className="text-3xl">⚠️</div>
               <div className="flex-1">
-                <h3 className="text-lg font-bold text-amber-600 mb-3">주의사항</h3>
-                <p className="text-foreground leading-relaxed">
-                  {forecastData.precautions}
-                </p>
+                <h3 className="text-xl font-bold text-amber-600 mb-4">주의사항</h3>
+                <div className="bg-amber-50/80 backdrop-blur-sm rounded-lg p-4 border border-amber-200/50">
+                  <p className="text-foreground leading-relaxed">
+                    {forecastData.precautions}
+                  </p>
+                </div>
               </div>
             </div>
           </CardContent>
         </Card>
 
         {/* 푸터 */}
-        <div className="text-center text-xs text-muted-foreground py-4">
+        <div className="text-center text-sm text-muted-foreground py-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
           마음 예보는 AI 분석을 통한 참고용 정보입니다. 
           건강한 마음가짐으로 하루를 시작하세요! 💫
         </div>
