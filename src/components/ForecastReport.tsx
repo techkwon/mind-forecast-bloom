@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { RefreshCw, Settings, Trash2 } from "lucide-react";
+import { RefreshCw, Settings, Trash2, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BiorhythmChart } from "./BiorhythmChart";
 import { MoodGauge } from "./MoodGauge";
@@ -99,30 +99,39 @@ export function ForecastReport({
 
         {/* 오늘의 총평 및 응원 메시지 - 맨 위로 이동 */}
         <div className="space-y-4">
-          {/* 격려 메시지 */}
-          <Card className="shadow-glow gradient-sunrise text-white">
-            <CardContent className="p-6 text-center">
-              <h3 className="text-xl font-bold mb-3">✨ 오늘의 메시지</h3>
-              <p className="text-lg leading-relaxed">
-                {forecastData.encouragement}
-              </p>
-            </CardContent>
-          </Card>
+          {/* 격려 메시지 - 더 눈에 띄게 개선 */}
+          {forecastData.encouragement && (
+            <Card className="shadow-glow gradient-sunrise text-white border-0 animate-scale-in">
+              <CardContent className="p-8 text-center">
+                <div className="flex justify-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                    <Sparkles className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold mb-4">✨ 오늘의 메시지</h3>
+                <p className="text-lg leading-relaxed font-medium">
+                  {forecastData.encouragement}
+                </p>
+              </CardContent>
+            </Card>
+          )}
 
           {/* 오늘의 총평 */}
-          <Card className="shadow-warm hover-lift transition-warm">
-            <CardContent className="p-6">
-              <div className="flex items-start space-x-3">
-                <div className="text-2xl">💡</div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-primary mb-3">오늘의 총평</h3>
-                  <p className="text-foreground leading-relaxed">
-                    {forecastData.dailyAdvice}
-                  </p>
+          {forecastData.dailyAdvice && (
+            <Card className="shadow-warm hover-lift transition-warm animate-slide-up">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="text-3xl">💡</div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-primary mb-4">오늘의 총평</h3>
+                    <p className="text-foreground leading-relaxed text-lg">
+                      {forecastData.dailyAdvice}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          )}
         </div>
 
         {/* 메인 요약 */}
